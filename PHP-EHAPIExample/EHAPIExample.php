@@ -1,19 +1,30 @@
 <?php
 
-require("/OAuth.php");
+require("OAuth.php");
+
+// In order to make a request to the API, you will need to know the Base URI for your LiveEngage account. 
+// To find the Base URI for your account, make a GET request to the following URL:
+// https://api.liveperson.net/api/account/{Your Account Number}/service/engHistDomain/baseURI.json?version=1.0
+// You should get a response that is similar to this:
+// {
+//  "service": "engHistDomain",
+//  "account": "56072331",
+//  "baseURI": "va-a.enghist.liveperson.net"
+// }
 
 // setup account
 $account = [
-	'consumerKey' => 'key',
-	'consumerSecret' => 'secret',
-	'token' => 'token',
-	'tokenSecret' => 'tokensecret',
-	'id' => 'accountid'
+	'consumerKey' => 'Your App Key',
+	'consumerSecret' => 'Your Secret',
+	'token' => 'Your Access Token',
+	'tokenSecret' => 'Your Token Secret',
+	'id' => 'Your Account ID',
+	'baseuri' => 'Your Base URI'
 ];
 
 // setup url
-$url_no = "https://lo.enghist.liveperson.net/interaction_history/api/account/".$account['id']."/interactions/search?limit=100&offset=100";
-$url = "https://lo.enghist.liveperson.net/interaction_history/api/account/".$account['id']."/interactions/search";
+$url_no = "https://".$account['baseuri']."/interaction_history/api/account/".$account['id']."/interactions/search?offset=0&limit=10";
+$url = "https://".$account['baseuri']."/interaction_history/api/account/".$account['id']."/interactions/search";
 $args = array();
 
 // create token + consumer set
@@ -37,7 +48,7 @@ curl_setopt($ch, CURLOPT_URL, $url_no);
 curl_setopt($ch, CURLOPT_POST, 1 );
 
 // body
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"start":{ "from":000000000,"to": 000000000 }}' ); 
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"start":{ "from":1477052344000,"to": 1477657144000 }}' ); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -49,6 +60,6 @@ $rsp = curl_exec($ch);
 $result = json_decode($rsp);
 
 // print objects/arrays
-print_r($result);
+print_r($rsp);
 
 ?>
