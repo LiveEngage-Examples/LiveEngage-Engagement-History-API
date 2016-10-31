@@ -37,6 +37,12 @@ You will need to update the following files:
 ## Node JS - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in Node.JS by using the request module. In order to run this example you will need to update the EHAPIExample.js file with your Engagement History API credentials.
 
+## PHP - Engagement History API Example
+This is a basic example of how to connect to the Engagement History API in PHP. In order to run this example you will need to update the EHAPIExample.php file with your Engagement History API credentials.
+
+### Contribution
+Thank you [GeNyaa](https://github.com/GeNyaa) for providing this example code.
+
 ## Python - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in Python by using the requests_oauthlib. In order to run this example you will need to update the ehapiExample.py file with your Engagement History API credentials.
 
