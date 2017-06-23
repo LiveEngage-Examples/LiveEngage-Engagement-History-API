@@ -1,3 +1,5 @@
+*See LP developer site for API docs and guides: https://developers.liveperson.com/documents.html*
+
 # LiveEngage-Engagement-History-API
 This repository contains C#, Java, Node.js, Python, and R examples for the LiveEngage Engagement History API.
 
