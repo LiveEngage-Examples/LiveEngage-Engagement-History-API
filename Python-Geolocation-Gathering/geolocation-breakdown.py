@@ -6,6 +6,14 @@ import time
 import csv
 from collections import Counter
 
+"""
+Install dependencies: pip install -r requirements.txt
+
+To run this file, you will need to update the following variables with your account information:
+- accountNum, consumer_key, consumer_secret, access_token, access_token_secret
+You will also need to update the start.to and start.from values in the body for the API request.
+"""
+
 #########################
 ### BoilerPlate Code ####
 #########################
@@ -39,8 +47,8 @@ MY_SKILLS = ['134515514',
 'xx',]
 
 
-# TODO gather skills and put in the body 
-# Customize the body for what you want 
+# TODO gather skills and put in the body
+# Customize the body for what you want
 body={
 	'interactive':'true',
 	'ended':'true',
@@ -70,7 +78,7 @@ countries = Counter()
 while(offset <= count): # Grab the data incrementally because can only pull 100 at a time.
 
 	# Complete the Requests.session POST
-	params={'offset':offset, 'limit':limit, 'start':'des'} # Prob shouldn't change offset and limit 
+	params={'offset':offset, 'limit':limit, 'start':'des'} # Prob shouldn't change offset and limit
 	engHistoryResponse = client.post(url=engHistoryURI, headers=postheader, data=json.dumps(body), auth=oauth, params=params)
 	if not engHistoryResponse.ok:
 		print(engHistoryResponse.status_code)
@@ -89,7 +97,7 @@ while(offset <= count): # Grab the data incrementally because can only pull 100 
 	# Update count, offset
 	count = engHistoryResults['_metadata']['count']
 	offset += limit
-	# print the status of the aggregation 
+	# print the status of the aggregation
 	print(str(offset) + "<=" + str(count))
 
 print("num records processed = " + str(numRecords))
