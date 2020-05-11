@@ -6,6 +6,14 @@ import time
 
 # This code was built using Python 3.5
 
+"""
+Install dependencies: pip install -r requirements.txt
+
+To run this file, you will need to update the following variables with your account information:
+- baseURI, consumer_key, consumer_secret, access_token, access_token_secret
+You will also need to update the start.to and start.from values in the body for the API request.
+"""
+
 start_time = time.time()
 
 baseURI = 'https://{YOUR BASE URI}/interaction_history/api/account/{YOUR ACCOUNT NUMBER}/interactions/search?offset=0&limit=10'
@@ -38,7 +46,7 @@ header = ["stime", "etime", "dur", "vID", "eID", "inter", "agent", "skill", "cha
 file = open(outfile, 'w')
 file.write(','.join(header)+ '\n')
 
-#create list of chat text and append to outfile    
+#create list of chat text and append to outfile
 result=[]
 for line in results["interactionHistoryRecords"]:
 	for x in ["info"]:
